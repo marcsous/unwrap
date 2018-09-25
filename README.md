@@ -1,8 +1,8 @@
 # unwrap
 
-MATLAB C++ mex wrappers to the phase unwrapping C code at https://github.com/geggo/phase-unwrap
+MATLAB C++ mex wrappers to the phase unwrapping code at https://github.com/geggo/phase-unwrap
 
-The .cpp files are the wrappers and the .c files are the original code from the link above.
+The .cpp files are the wrappers and the .m files provide a basic interface.
 
 Instructions
 
