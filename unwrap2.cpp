@@ -160,7 +160,7 @@ void initialisePIXELs(T *wrapped_image, unsigned char *input_mask, unsigned char
 	  pixel_pointer->increment = 0;
 	  pixel_pointer->number_of_pixels_in_group = 1;
 	  pixel_pointer->value = *wrapped_image_pointer;
-	  pixel_pointer->reliability = 9999999.f + rand();
+	  pixel_pointer->reliability = 9999999. + rand();
 	  pixel_pointer->input_mask = *input_mask_pointer;
 	  pixel_pointer->extended_mask = *extended_mask_pointer;
 	  pixel_pointer->head = pixel_pointer;
