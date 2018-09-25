@@ -1,4 +1,4 @@
-function output = unwrap2D(varargin)
+function output = unwrap2(varargin)
 %
 %Phase unwrapping in 2D using mex wrapper to
 %code at https://github.com/geggo/phase-unwrap
