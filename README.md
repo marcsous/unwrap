@@ -7,5 +7,5 @@ The .cpp files are the wrappers and the .c files are the original code from the 
 Instructions
 
 1. Put all files in the same directory
-2. mex unwrap2D.cpp
-3. mex unwrap3D.cpp
+2. mex unwrap2.cpp
+3. mex unwrap3.cpp
