@@ -1092,7 +1092,7 @@ void mexFunction(int nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[])
     if(ndims != 3)
         mxShowCriticalErrorMessage("argument 1 must be a 3D array");
     
-    const size_t *dims = mxGetDimensions(prhs[0]);
+    const mwSize *dims = mxGetDimensions(prhs[0]);
     int nx = dims[0], ny = dims[1], nz = dims[2];
     
     if(nx <= 1 || ny <= 1 || nz <= 1)
