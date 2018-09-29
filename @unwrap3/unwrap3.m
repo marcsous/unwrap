@@ -7,7 +7,7 @@ function output = unwrap3(varargin)
 %output = unwrap3(input,mask)
 %
 %Inputs
-%-input: wrapped phase between -pi and pi
+%-input: wrapped phase between -pi and +pi
 %-mask: binary quality mask (1=keep 0=reject)
 %
 %Outputs
