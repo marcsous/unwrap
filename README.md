@@ -6,6 +6,5 @@ The .cpp files are the wrappers and the .m files provide a basic interface.
 
 Instructions
 
-1. Put all files in the same directory
-2. mex unwrap2.cpp
-3. mex unwrap3.cpp
+1. Put the @unwrap folders in the path.
+2. That's it - ready to go.
