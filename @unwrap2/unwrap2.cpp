@@ -748,6 +748,7 @@ void unwrap2D(T* wrapped_image, T* UnwrappedImage, unsigned char* input_mask,
 
 // gateway to MATLAB
 #include "mex.h"
+#include <stdint.h>
 #include "mxShowCriticalErrorMessage.h"
 
 void mexFunction(int nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[])
@@ -796,21 +797,21 @@ void mexFunction(int nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[])
                                   break;
 
             case mxINT8_CLASS:
-            case mxUINT8_CLASS:   input_mask[i] = ((int8_t*)mxGetData(prhs[1]))[i] == 0;
+            case mxUINT8_CLASS:   input_mask[i] = ((uint8_t*)mxGetData(prhs[1]))[i] == 0;
                                   break;
             
             case mxINT16_CLASS:
-            case mxUINT16_CLASS:  input_mask[i] = ((int16_t*)mxGetData(prhs[1]))[i] == 0;
+            case mxUINT16_CLASS:  input_mask[i] = ((uint16_t*)mxGetData(prhs[1]))[i] == 0;
                                   break;
   
             case mxINT32_CLASS:
             case mxUINT32_CLASS:
-            case mxSINGLE_CLASS:  input_mask[i] = ((int32_t*)mxGetData(prhs[1]))[i] == 0;
+            case mxSINGLE_CLASS:  input_mask[i] = ((uint32_t*)mxGetData(prhs[1]))[i] == 0;
                                   break;
   
             case mxINT64_CLASS:
             case mxUINT64_CLASS:
-            case mxDOUBLE_CLASS:  input_mask[i] = ((int64_t*)mxGetData(prhs[1]))[i] == 0;
+            case mxDOUBLE_CLASS:  input_mask[i] = ((uint64_t*)mxGetData(prhs[1]))[i] == 0;
                                   break;
                                     
             default:              mxShowCriticalErrorMessage("argument 2 type incompatible");
