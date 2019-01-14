@@ -1084,6 +1084,13 @@ void mexFunction(int nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[])
     if(nlhs > 1)
         mxShowCriticalErrorMessage("wrong number of output arguments",nlhs);
     
+    switch(mxGetClassID(prhs[0]))
+    {
+        case mxSINGLE_CLASS:
+        case mxDOUBLE_CLASS: break;
+        default: mxShowCriticalErrorMessage("argument 1 type incompatible");
+    }
+    
     if(mxIsComplex(prhs[0]))
         mxShowCriticalErrorMessage("argument 1 must be real valued");
     
@@ -1103,6 +1110,22 @@ void mexFunction(int nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[])
     
     if (nrhs==2)
     {
+        switch(mxGetClassID(prhs[1]))
+        {
+            case mxLOGICAL_CLASS:
+            case mxINT8_CLASS:
+            case mxUINT8_CLASS:
+            case mxINT16_CLASS:
+            case mxUINT16_CLASS:
+            case mxINT32_CLASS:
+            case mxUINT32_CLASS:
+            case mxSINGLE_CLASS:
+            case mxINT64_CLASS:
+            case mxUINT64_CLASS:
+            case mxDOUBLE_CLASS: break;
+            default: mxShowCriticalErrorMessage("argument 2 type incompatible");
+        }
+        
         if(mxGetNumberOfDimensions(prhs[1]) != 3)
             mxShowCriticalErrorMessage("argument 2 must be a 3D array");
         
