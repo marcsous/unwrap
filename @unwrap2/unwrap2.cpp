@@ -774,7 +774,7 @@ void mexFunction(int nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[])
     if(ndims != 2)
         mxShowCriticalErrorMessage("argument 1 must be a 2D array");
     
-    const size_t *dims = mxGetDimensions(prhs[0]);
+    const mwSize *dims = mxGetDimensions(prhs[0]);
     int nx = dims[0], ny = dims[1];
     
     if(nx <= 1 || ny <= 1)
