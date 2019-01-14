@@ -759,6 +759,13 @@ void mexFunction(int nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[])
     if(nlhs > 1)
         mxShowCriticalErrorMessage("wrong number of output arguments",nlhs);
     
+    switch(mxGetClassID(prhs[0]))
+    {
+        case mxSINGLE_CLASS:
+        case mxDOUBLE_CLASS: break;
+        default: mxShowCriticalErrorMessage("argument 1 type incompatible");
+    }
+
     if(mxIsComplex(prhs[0]))
         mxShowCriticalErrorMessage("argument 1 must be real valued");
     
@@ -767,7 +774,7 @@ void mexFunction(int nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[])
     if(ndims != 2)
         mxShowCriticalErrorMessage("argument 1 must be a 2D array");
     
-    const mwSize *dims = mxGetDimensions(prhs[0]);
+    const size_t *dims = mxGetDimensions(prhs[0]);
     int nx = dims[0], ny = dims[1];
     
     if(nx <= 1 || ny <= 1)
@@ -778,6 +785,22 @@ void mexFunction(int nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[])
     
     if (nrhs==2)
     {
+        switch(mxGetClassID(prhs[1]))
+        {
+            case mxLOGICAL_CLASS:
+            case mxINT8_CLASS:
+            case mxUINT8_CLASS:
+            case mxINT16_CLASS:
+            case mxUINT16_CLASS:
+            case mxINT32_CLASS:
+            case mxUINT32_CLASS:
+            case mxSINGLE_CLASS:
+            case mxINT64_CLASS:
+            case mxUINT64_CLASS:
+            case mxDOUBLE_CLASS: break;
+            default: mxShowCriticalErrorMessage("argument 2 type incompatible");
+        }
+
         if(mxGetNumberOfDimensions(prhs[1]) != 2)
             mxShowCriticalErrorMessage("argument 2 must be a 2D array");
         
@@ -813,8 +836,6 @@ void mexFunction(int nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[])
             case mxUINT64_CLASS:
             case mxDOUBLE_CLASS:  input_mask[i] = ((uint64_t*)mxGetData(prhs[1]))[i] == 0;
                                   break;
-                                    
-            default:              mxShowCriticalErrorMessage("argument 2 type incompatible");
             }
         }
     }
@@ -836,8 +857,6 @@ void mexFunction(int nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[])
                              unwrap2D((double*)mxGetData(prhs[0]), (double*)mxGetData(plhs[0]),
                              input_mask, nx, ny, wrap_around_x, wrap_around_y);
                              break;
-
-        default:             mxShowCriticalErrorMessage("argument 1 type incompatible");
     }
 
 }
