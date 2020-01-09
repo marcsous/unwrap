@@ -9,6 +9,8 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
+#include <limits>
+#include <iostream>
 #include "mxShowCriticalErrorMessage.h"
 
 // forward declaration of unwrap3D function (below)

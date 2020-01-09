@@ -3,11 +3,13 @@
 // Inspired by
 //   http://www.advanpix.com/2016/02/14/short-and-informative-error-messages-from-mex/
 //
+#include <iostream>
 
-#include <libgen.h>
+// Macro to strip the path off __FILE__ (platform independent alternative to basename)
+#define __FUNC__ std::max<const char*>(__FILE__,std::max(strrchr(__FILE__,'\\')+1,strrchr(__FILE__,'/')+1))
 
-// Use macro to expand __FILE__ and __LINE__ correctly
-#define mxShowCriticalErrorMessage(...) err_fn(basename((char*)__FILE__),__LINE__,##__VA_ARGS__)
+// Use macro to expand __FUNC__ and __LINE__ correctly
+#define mxShowCriticalErrorMessage(...) err_fn(__FUNC__,__LINE__,##__VA_ARGS__)
 
 // Use overloads to handle __VA_ARGS__ correctly
 void err_fn(const char *fn_name, int line_no, const char *err_message, int err_code)
