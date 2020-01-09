@@ -168,6 +168,10 @@ void mexFunction(int nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[])
 #define NOMASK 0
 #define MASK 1
 
+#ifndef M_PI
+#define M_PI 3.141592653589793
+#endif
+
 #define PI static_cast<T>(M_PI)
 #define TWOPI static_cast<T>(2*M_PI)
 
