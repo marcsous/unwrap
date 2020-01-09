@@ -9,6 +9,7 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
+#include <limits>
 #include <iostream>
 #include "mxShowCriticalErrorMessage.h"
 
@@ -129,7 +130,6 @@ void mexFunction(int nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[])
     // circular wrap (1=yes 0=no)
     int wrap_around_x = 0;
     int wrap_around_y = 0;
-    int wrap_around_z = 0;
     
     // output array - handle both floating point types
     switch(mxGetClassID(prhs[0]))
@@ -162,6 +162,10 @@ void mexFunction(int nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[])
 
 #define NOMASK 0
 #define MASK 1
+
+#ifndef M_PI
+#define M_PI 3.141592653589793
+#endif
 
 #define PI static_cast<T>(M_PI)
 #define TWOPI static_cast<T>(2*M_PI)
@@ -300,7 +304,7 @@ template <typename T>
             pixel_pointer->increment = 0;
             pixel_pointer->number_of_pixels_in_group = 1;
             pixel_pointer->value = *wrapped_image_pointer;
-            pixel_pointer->reliability = 9999999999. + rand(); // MB rand?
+            pixel_pointer->reliability = 9999999999. + rand(); // MB rand? randomizes the masked and edge pixels?
             pixel_pointer->input_mask = *input_mask_pointer;
             pixel_pointer->extended_mask = *extended_mask_pointer;
             pixel_pointer->head = pixel_pointer;

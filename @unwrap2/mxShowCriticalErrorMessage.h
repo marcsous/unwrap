@@ -4,8 +4,10 @@
 //   http://www.advanpix.com/2016/02/14/short-and-informative-error-messages-from-mex/
 //
 
+#include <libgen.h>
+
 // Use macro to expand __FILE__ and __LINE__ correctly
-#define mxShowCriticalErrorMessage(...) err_fn(basename(__FILE__),__LINE__,##__VA_ARGS__)
+#define mxShowCriticalErrorMessage(...) err_fn(basename((char*)__FILE__),__LINE__,##__VA_ARGS__)
 
 // Use overloads to handle __VA_ARGS__ correctly
 void err_fn(const char *fn_name, int line_no, const char *err_message, int err_code)
