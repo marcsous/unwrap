@@ -11,6 +11,7 @@
 #include <time.h>
 #include <limits>
 #include <iostream>
+# include <omp.h>
 #include "mxShowCriticalErrorMessage.h"
 
 // forward declaration of unwrap3D function (below)

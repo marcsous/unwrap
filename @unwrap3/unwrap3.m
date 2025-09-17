@@ -13,10 +13,10 @@ function output = unwrap3(varargin)
 %Outputs
 %-output: unwrapped phase
 
-mexbin = [mfilename('fullpath') '.' mexext];
+mexbin = [mfilename('fullpath') '.' mexext]
 
 if ~exist(mexbin,'file')
-    mexcpp = [mfilename('fullpath') '.cpp'];
+    mexcpp = [mfilename('fullpath') '.cpp']
     mex('-v',mexcpp,'-output',mexbin);
 end
 
