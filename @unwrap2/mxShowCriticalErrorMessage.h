@@ -3,6 +3,14 @@
 // Inspired by
 //   http://www.advanpix.com/2016/02/14/short-and-informative-error-messages-from-mex/
 //
+// Usage:
+// mxShowCriticalErrorMessage("my message");
+// mxShowCriticalErrorMessage("my message", 123);
+//
+#ifndef mxShowCriticalErrorMessage
+
+#include "mex.h"
+#include <string.h>
 #include <iostream>
 
 // Macro to strip the path off __FILE__ (platform independent alternative to basename)
@@ -47,3 +55,5 @@ void err_fn(const char *fn_name, int line_no)
 {
     err_fn(fn_name, line_no, "Error occurred");
 }
+
+#endif
